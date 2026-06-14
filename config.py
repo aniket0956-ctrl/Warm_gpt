@@ -3,11 +3,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Bot Configuration
-BOT_TOKEN = os.getenv("8835079798:AAHFthUIqI_X2cGAce2Nl_X9I0ghZqFX6u4")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise ValueError("BOT_TOKEN environment variable is required")
 
-ADMIN_CHAT_ID = int(os.getenv("7736033471", "chat_id"))
+ADMIN_CHAT_ID = int(os.getenv("ADMIN_CHAT_ID", "0"))
 
 # Channels to join
 REQUIRED_CHANNELS = [
@@ -46,5 +46,5 @@ VENICE_AI_COOKIES = {
     '__client_uat_aKq7rGhf': '0',
     '__stripe_mid': '6c48ddc6-76cc-46fc-8a50-e666d3b079d584dfb5',
     '__stripe_sid': 'b157457f-0baf-4e2f-be1d-a2e11f9d552f45e4f5',
-    'ph_phc_4Yg9V0hm9Lgavwcr6LZACe64tya7UqfyHePVNOzYREF_posthog': '%7B%22distinct_id%22%3A%220197af9d-7fe5-7447-8a56-b00f36b35b27%22%2C%22%24sesid%22%3A%5B1750998158559%2C%220197af9d-7fe1-7309-b568-e2f29c3a4882%22%2C1750998024161%5D%2C%22%24epp%22%3Atrue%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22https%3A%2F%2Fwww.google.com%2F%22%2C%22u%22%3A%22https%3A%2F%2Fvenice.ai%2F%22%7D%7D',
+    'ph_phc_4Yg9V0hm9Lgavwcr6LZACe64tya7UqfyHePVNOzYREF_posthog': '%7B%22distinct_id%22%3A%220197af9d-7fe5-7447-8a56-b00f36b35b27%22%2C%22%24sesid%22%3A%5B1750998158559%2C%220197af9d-7fe1-7309-b568-e2[...]
 }
