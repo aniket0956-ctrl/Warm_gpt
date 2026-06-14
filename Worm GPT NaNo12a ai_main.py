@@ -39,7 +39,7 @@ def start_telegram_bot():
     
     try:
         # Create the Application - simplified for newer python-telegram-bot versions
-        application = Application.builder().token("8835079798:AAHFthUIqI_X2cGAce2Nl_X9I0ghZqFX6u4").build()
+        application = Application.builder().token(BOT_TOKEN).build()
         
         # Initialize handlers
         handlers = BotHandlers()
