@@ -53,11 +53,14 @@ class BotHandlers:
                     channel_username = channel["chat_id"].replace("@", "")
                 elif "url" in channel:
                     # Extract from URL like https://t.me/AI25NANO
-                    channel_username = channel["https://t.me/annu_proo"].split("/")[-1]
+                    channel_username = channel["url"].split("/")[-1]
                 else:
                     continue
                     
-                member = await context.bot.get_chat_member(f"@{https://t.me/annu_proo}", user_id)
+                member = await context.bot.get_chat_member(
+                    f"@{channel_username}",
+                    user_id
+                )
                 if member.status in [ChatMember.LEFT, ChatMember.BANNED]:
                     return False
             except Exception as e:
@@ -118,7 +121,7 @@ Please join the channel to unlock AI features\\!"""
         """Send welcome message after successful verification"""
         keyboard = [
             [InlineKeyboardButton("🤖 Chat with Worm GPT NaNo12a AI", callback_data="chat_worm")],
-            [InlineKeyboardButton("👨‍💻 Developer", url=f"https://t.me/{ANNU_NG.replace('@', '')}")]
+            [InlineKeyboardButton("👨‍💻 Developer", url=f"https://t.me/{DEVELOPER_USERNAME.replace('@', '')}")]
         ]
         
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -141,7 +144,7 @@ Please join the channel to unlock AI features\\!"""
         """Send main menu to verified users"""
         keyboard = [
             [InlineKeyboardButton("🤖 Chat with Worm GPT NaNo12a AI", callback_data="chat_worm")],
-            [InlineKeyboardButton("👨‍💻 Developer", url=f"https://t.me/{ANNU_NG.replace('@', '')}")]
+            [InlineKeyboardButton("👨‍💻 Developer", url=f"https://t.me/{DEVELOPER_USERNAME.replace('@', '')}")]
         ]
         
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -187,7 +190,7 @@ Please join the channel to unlock AI features\\!"""
         
         elif query.data == "chat_worm":
             await query.edit_message_text(
-                "🤖 **Worm GPT NaNo12a AI Chat Mode Activated**\n\nYou can now ask me anything! Just type your question and I'll respond with AI-powered answers.\n\n💡 *Type /menu to return to main menu*",
+                "🤖 **Worm GPT NaNo12a AI Chat Mode Activated**\n\nYou can now ask me anything! Just type your question and I'll respond with AI-powered answers.\n\n💡 *Type /menu to return t[...]
                 parse_mode=ParseMode.MARKDOWN
             )
             # Set user state to chat mode
