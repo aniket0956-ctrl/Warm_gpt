@@ -44,30 +44,30 @@ class BotHandlers:
     async def check_channel_membership(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
         """Check if user is member of all required channels"""
         user_id = update.effective_user.id
-        
-        # Check membership for all required channels
+
         for channel in REQUIRED_CHANNELS:
             try:
-                # Get channel username from URL or chat_id
                 if "chat_id" in channel:
                     channel_username = channel["chat_id"].replace("@", "")
                 elif "url" in channel:
-                    # Extract from URL like https://t.me/AI25NANO
                     channel_username = channel["url"].split("/")[-1]
                 else:
                     continue
-                    
+
                 member = await context.bot.get_chat_member(
                     f"@{channel_username}",
                     user_id
                 )
+
                 if member.status in [ChatMember.LEFT, ChatMember.BANNED]:
                     return False
+
             except Exception as e:
-                logging.warning(f"Could not check membership for {channel.get('name', 'channel')}: {e}")
-                # If we can't check, we'll assume they need to join
+                logging.warning(
+                    f"Could not check membership for {channel.get('name', 'channel')}: {e}"
+                )
                 return False
-        
+
         return True
     
     async def send_join_channels_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
