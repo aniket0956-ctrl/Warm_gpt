@@ -190,7 +190,9 @@ Please join the channel to unlock AI features\\!"""
         
         elif query.data == "chat_worm":
             await query.edit_message_text(
-                "🤖 **Worm GPT NaNo12a AI Chat Mode Activated**\n\nYou can now ask me anything! Just type your question and I'll respond with AI-powered answers.\n\n💡 *Type /menu to return t[...]
+                "🤖 *Worm GPT NaNo12a AI Chat Mode Activated*\n\n"
+                "You can now ask me anything! Just type your question and I'll respond with AI-powered answers.\n\n"
+                "💡 *Type /menu to return to the main menu.*",
                 parse_mode=ParseMode.MARKDOWN
             )
             # Set user state to chat mode
