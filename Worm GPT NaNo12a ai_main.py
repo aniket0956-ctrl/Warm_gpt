@@ -38,7 +38,7 @@ def start_telegram_bot():
     logger.info("🚀 Starting Worm GPT NaNo12a AI Bot...")
     
     try:
-        # Create the Application - simplified for newer python-telegram-bot versions
+        # Create the Application with BOT_TOKEN from config
         application = Application.builder().token(BOT_TOKEN).build()
         
         # Initialize handlers
@@ -60,8 +60,11 @@ def start_telegram_bot():
         logger.info("✅ Bot handlers configured successfully")
         logger.info("🔄 Starting bot polling...")
         
-        # Start the bot - simplified polling for newer versions
+        # Delete webhook and start polling with improved configuration
+        application.bot.delete_webhook(drop_pending_updates=True)
+        
         application.run_polling(
+            drop_pending_updates=True,
             allowed_updates=["message", "callback_query"],
             poll_interval=1.0
         )
