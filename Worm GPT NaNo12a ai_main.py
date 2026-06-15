@@ -60,9 +60,6 @@ def start_telegram_bot():
         logger.info("✅ Bot handlers configured successfully")
         logger.info("🔄 Starting bot polling...")
         
-        # Delete webhook and start polling with improved configuration
-        application.bot.delete_webhook(drop_pending_updates=True)
-        
         application.run_polling(
             drop_pending_updates=True,
             allowed_updates=["message", "callback_query"],
